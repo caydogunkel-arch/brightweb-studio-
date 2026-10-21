@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Affordable, mobile-friendly websites for small businesses in South Africa.">
+  <title>BrightWeb Studio | Websites for Small Businesses</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #5b6578;
+      --brand: #2864ff;
+      --brand-dark: #1746c7;
+      --pale: #f3f6ff;
+      --line: #e1e7f2;
+      --white: #ffffff;
+      --mint: #d8fff0;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink);
+      line-height: 1.6; background: var(--white);
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line); backdrop-filter: blur(10px);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 18px; }
+    .logo { font-weight: 800; letter-spacing: -.5px; font-size: 1.15rem; text-decoration: none; }
+    .logo span { color: var(--brand); }
+    nav { display: flex; gap: 22px; align-items: center; }
+    nav a { text-decoration: none; font-size: .95rem; color: var(--muted); }
+    nav a:hover { color: var(--brand); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 18px; border-radius: 12px; background: var(--brand); color: white;
+      text-decoration: none; font-weight: 700; border: 2px solid var(--brand); cursor: pointer;
+    }
+    .button:hover { background: var(--brand-dark); border-color: var(--brand-dark); }
+    .button.secondary { background: transparent; color: var(--ink); border-color: var(--line); }
+    .button.secondary:hover { border-color: var(--brand); color: var(--brand); }
+    .hero { padding: 78px 0 72px; background: radial-gradient(circle at 82% 20%, #e1eaff 0, transparent 32%), linear-gradient(180deg,#fbfcff,white); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 46px; align-items: center; }
+    .eyebrow { display: inline-block; background: var(--mint); padding: 7px 12px; border-radius: 999px; font-size: .85rem; font-weight: 700; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.04; letter-spacing: -2px; margin: 18px 0; }
+    h1 em { color: var(--brand); font-style: normal; }
+    .lead { color: var(--muted); font-size: 1.13rem; max-width: 590px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0; }
+    .tiny { font-size: .88rem; color: var(--muted); }
+    .mockup {
+      background: #101a32; padding: 13px; border-radius: 22px; box-shadow: 0 24px 65px #19376b2b;
+      transform: rotate(1deg);
+    }
+    .mockup-top { display: flex; gap: 6px; padding: 4px 5px 13px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #ff6b6b; }
+    .dot:nth-child(2) { background: #ffd166; } .dot:nth-child(3) { background: #06d6a0; }
+    .mockup-screen { background: white; border-radius: 12px; overflow: hidden; min-height: 320px; }
+    .mock-nav { padding: 16px 18px; display: flex; justify-content: space-between; font-size: .8rem; font-weight: 800; }
+    .mock-banner { margin: 5px 14px 14px; border-radius: 12px; padding: 24px 18px; background: linear-gradient(130deg,#e5ecff,#f3f7ff); }
+    .mock-banner b { display: block; font-size: 1.5rem; line-height: 1.1; max-width: 230px; }
+    .mock-banner p { font-size: .78rem; color: #5b6578; }
+    .mock-pill { display: inline-block; border-radius: 7px; padding: 7px 10px; background: var(--brand); color: white; font-size: .7rem; }
+    .mock-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 0 14px 15px; }
+    .mock-card { height: 62px; border-radius: 8px; background: #f1f4fb; padding: 10px; font-size: .65rem; font-weight: bold; }
+    section { padding: 72px 0; }
+    .section-head { max-width: 680px; margin: 0 auto 34px; text-align: center; }
+    h2 { font-size: clamp(1.8rem,3vw,2.6rem); line-height: 1.15; letter-spacing: -.8px; margin: 0 0 12px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .card { border: 1px solid var(--line); border-radius: 18px; padding: 24px; background: white; }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 13px; background: var(--pale); font-size: 1.35rem; }
+    .card h3 { margin: 15px 0 7px; }
+    .card p { color: var(--muted); margin: 0; font-size: .96rem; }
+    .pale-section { background: var(--pale); }
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; counter-reset: step; }
+    .step { background: white; padding: 24px; border-radius: 16px; border: 1px solid var(--line); }
+    .step:before { counter-increment: step; content: "0" counter(step); font-size: .85rem; font-weight: 800; color: var(--brand); }
+    .step h3 { margin: 10px 0 7px; }
+    .step p { color: var(--muted); margin: 0; }
+    .pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-items: stretch; }
+    .price-card { border: 1px solid var(--line); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; }
+    .price-card.featured { border: 2px solid var(--brand); box-shadow: 0 12px 35px #2864ff18; }
+    .tag { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--brand); font-weight: 800; }
+    .price { font-size: 2rem; font-weight: 800; margin: 10px 0 0; }
+    .price-note { color: var(--muted); font-size: .88rem; }
+    .price-card ul { padding-left: 20px; color: var(--muted); flex: 1; }
+    .price-card li { margin: 8px 0; }
+    .price-card .button { margin-top: 10px; }
+    .contact-box { background: #14213d; color: white; border-radius: 24px; padding: clamp(26px,5vw,50px); display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .contact-box p { color: #d0d7e8; }
+    .contact-form { display: grid; gap: 12px; }
+    input, textarea, select { width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid #cbd4e4; font: inherit; background: white; color: var(--ink); }
+    textarea { min-height: 100px; resize: vertical; }
+    .contact-form .button { width: 100%; }
+    footer { padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .notice { background: #fff7db; border: 1px solid #f0df9d; padding: 12px 14px; border-radius: 10px; color: #5c4a00; font-size: .9rem; margin-top: 18px; }
+    @media (max-width: 760px) {
+      .nav { min-height: 64px; } nav { display: none; }
+      .hero { padding: 52px 0; } .hero-grid, .contact-box { grid-template-columns: 1fr; }
+      .mockup { max-width: 480px; margin: 0 auto; width: 100%; }
+      section { padding: 55px 0; }
+      .cards, .steps, .pricing { grid-template-columns: 1fr; }
+      .contact-box { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">Bright<span>Web</span> Studio</a>
+    <nav aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#process">How it works</a><a href="#pricing">Packages</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="button" href="#contact">Get a quote</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Websites for South African small businesses</span>
+        <h1>Make your business look <em>ready for the next level.</em></h1>
+        <p class="lead">Simple, modern websites that help customers discover your business, understand what you offer and get in touch with you.</p>
+        <div class="actions">
+          <a class="button" href="#contact">Let's talk about your website →</a>
+          <a class="button secondary" href="#services">Explore services</a>
+        </div>
+        <p class="tiny">Mobile-friendly design • Clear pricing • Friendly service</p>
+      </div>
+      <div class="mockup" aria-label="Illustration of a website on a computer screen">
+        <div class="mockup-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="mockup-screen">
+          <div class="mock-nav"><span>YOUR BUSINESS</span><span>☰</span></div>
+          <div class="mock-banner">
+            <b>A better first impression starts here.</b>
+            <p>Show customers your services, opening hours and how to contact you.</p>
+            <span class="mock-pill">CONTACT US</span>
+          </div>
+          <div class="mock-cards"><div class="mock-card">OUR SERVICES</div><div class="mock-card">ABOUT US</div><div class="mock-card">GET IN TOUCH</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>What I can help you build</h2>
+        <p>Professional basics that help a small business look trustworthy online.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="icon">🖥️</div><h3>Business websites</h3><p>A clear home page, services, about section and contact details in one place.</p></article>
+        <article class="card"><div class="icon">📱</div><h3>Mobile-friendly pages</h3><p>Layouts designed to work on phones, where many customers browse.</p></article>
+        <article class="card"><div class="icon">📍</div><h3>Contact & enquiry pages</h3><p>Make it easier for customers to ask questions, call or find your business.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pale-section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>Simple from start to finish</h2>
+        <p>You'll know what we're making before work begins.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><h3>Tell me about your business</h3><p>Share your services, preferred style, contact details and any photos or logo you already have.</p></article>
+        <article class="step"><h3>Review your design</h3><p>I'll prepare a first version for you to review. We agree on any changes before the final handover.</p></article>
+        <article class="step"><h3>Publish your website</h3><p>Choose suitable hosting and connect your website. Paid domains and advanced features are optional extras.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <h2>Starter packages</h2>
+        <p>Example starting prices in South African rand. Final quotes depend on the pages and features you need.</p>
+      </div>
+      <div class="pricing">
+        <article class="price-card">
+          <span class="tag">Starter</span><h3>One-page website</h3><div class="price">R500+</div><div class="price-note">Example starting quote</div>
+          <ul><li>Single scrolling page</li><li>Services and about section</li><li>Contact details</li><li>Mobile-friendly layout</li></ul>
+          <a class="button secondary" href="#contact" data-package="One-page website">Ask about Starter</a>
+        </article>
+        <article class="price-card featured">
+          <span class="tag">Popular</span><h3>Small business site</h3><div class="price">R1,000+</div><div class="price-note">Example starting quote</div>
+          <ul><li>Up to 4 simple pages</li><li>Home, services, about and contact</li><li>Basic search-friendly page titles</li><li>Mobile-friendly layout</li></ul>
+          <a class="button" href="#contact" data-package="Small business website">Ask about Business</a>
+        </article>
+        <article class="price-card">
+          <span class="tag">Custom</span><h3>More features</h3><div class="price">Let's quote</div><div class="price-note">Price agreed before work</div>
+          <ul><li>Extra pages or sections</li><li>Bookings or special forms</li><li>Extra design requests</li><li>Scope agreed in writing</li></ul>
+          <a class="button secondary" href="#contact" data-package="Custom website">Ask about Custom</a>
+        </article>
+      </div>
+      <div class="notice"><strong>Important:</strong> These are example prices, not a promise of results. Hosting, domain names, paid tools, copywriting, maintenance and complex features may cost extra. Confirm the scope and price with the customer before starting.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Why work with BrightWeb Studio?</h2>
+        <p>A straightforward process, clear communication and a focus on what your business actually needs.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="icon">🤝</div><h3>Clear communication</h3><p>We agree on the pages, price and timeline before the project begins.</p></article>
+        <article class="card"><div class="icon">✨</div><h3>Clean design</h3><p>Easy-to-read layouts that put your business information first.</p></article>
+        <article class="card"><div class="icon">📋</div><h3>Practical handover</h3><p>You'll receive the agreed files and guidance for publishing the site.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pale-section" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <span class="eyebrow">Let's build something useful</span>
+          <h2 style="margin-top:18px">Tell me what your business needs.</h2>
+          <p>Use the form to prepare an enquiry message. Add your real contact details before publishing this website.</p>
+          <p class="tiny" style="color:#d0d7e8">No payment is taken on this page. This form opens an email draft on the visitor's device.</p>
+        </div>
+        <form class="contact-form" id="enquiryForm">
+          <label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="e.g. Thando" required>
+          <label for="business">Business name</label><input id="business" name="business" placeholder="Your business or company" required>
+          <label for="package">What do you need?</label>
+          <select id="package" name="package"><option>One-page website</option><option>Small business website</option><option>Custom website</option><option>Not sure yet</option></select>
+          <label for="message">A few details</label><textarea id="message" name="message" placeholder="What does your business do? What pages do you need?"></textarea>
+          <button class="button" type="submit">Prepare enquiry email →</button>
+          <p class="tiny" style="color:#d0d7e8">Before going live, replace the demo email address in the website code with your own.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> BrightWeb Studio. All rights reserved.</span>
+    <span>Built for small businesses in South Africa.</span>
+  </div>
+</footer>
+
+<script>
+  // IMPORTANT: Replace this with an email address you control before publishing.
+  const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll("[data-package]").forEach(link => {
+    link.addEventListener("click", () => {
+      const chosen = link.getAttribute("data-package");
+      const select = document.getElementById("package");
+      for (const option of select.options) {
+        if (option.text === chosen) { select.value = chosen; break; }
+      }
+    });
+  });
+
+  document.getElementById("enquiryForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (CONTACT_EMAIL === "YOUR_EMAIL@example.com") {
+      alert("Before publishing, edit index.html and replace YOUR_EMAIL@example.com with your real email address.");
+      return;
+    }
+    const data = new FormData(this);
+    const subject = encodeURIComponent("Website enquiry from " + data.get("business"));
+    const body = encodeURIComponent(
+      "Name: " + data.get("name") + "\n" +
+      "Business: " + data.get("business") + "\n" +
+      "Package: " + data.get("package") + "\n\n" +
+      "Details:\n" + data.get("message")
+    );
+    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
+  });
+</script>
+</body>
+</html>
